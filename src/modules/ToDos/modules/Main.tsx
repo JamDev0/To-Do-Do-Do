@@ -1,14 +1,27 @@
 import { ClipboardText } from "phosphor-react"
 import { useState } from "react"
+import { ToDo } from "../../ToDo";
 
-export function Main() {
+interface MainProps {
+    ToDos: {
+        id: number;
+        isChecked: boolean;
+        content: string;
+    }[]
+}
+
+export function Main({ ToDos }:MainProps) {
     const [doToDosExists, setDoToDosExists] = useState<boolean>(false)
 
     return (
         <main className={`w-full relative rounded-lg border-brand-base-gray-400 border-t-2 ${!doToDosExists ? 'flex items-center justify-center px-20 py-[50px]' : ''}`}>
             {
                 doToDosExists ?
-                    <h1>Opa</h1>
+                    (
+                        ToDos.map( props => {
+                            return <ToDo {...props}/>
+                        })
+                    )
                 :
                     (
                         <div className="flex flex-col items-center justify-center gap-y-[16px]">

@@ -1,8 +1,20 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 
-export function Header() {
-    const [numOfCreatedToDos, setNumOfCreatedToDos] = useState<number>(5);
-    const [numOfConcludedToDos, setNumOfConcludedToDos] = useState<number>(5);
+interface HeaderProps {
+    ToDos: {
+        id: number;
+        isChecked: boolean;
+        content: string;
+    }[]
+}
+
+export function Header({ ToDos }:HeaderProps) {
+    const [numOfCreatedToDos, setNumOfCreatedToDos] = useState<number>(ToDos.length);
+    const [numOfConcludedToDos, setNumOfConcludedToDos] = useState<number>(0);
+
+    // Arrumar isso aqui que não atualiza o numero de todos >|
+
+    console.log('Numero de Todos dentro do header ', ToDos)
 
     return (
         <header className="flex w-full justify-between mb-[24px] font-bold text-sm">

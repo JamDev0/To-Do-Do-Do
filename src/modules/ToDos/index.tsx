@@ -1,17 +1,39 @@
+import { useEffect, useState } from "react";
+
 import { ToDo } from "../ToDo";
 import { Header } from "./modules/Header";
 import { Main } from "./modules/Main";
 
-export function ToDos() {
-    // function handleToDoCheck(ToDoId) {
+interface ToDosInterface {
+    id: number;
+    isChecked: boolean;
+    content: string;
+}
 
-    // }
+export function ToDos() {
+    const [ToDos, setToDos] = useState<ToDosInterface[] | []>([]);
+
+    async function getToDos() {
+        return fetch('../../../Jsons/ToDos.json').then(res => res.json()).then(data => {return data})
+    }
+
+    function doToDosExists() {
+        return ToDos.length > 0;
+    }
+
+    useEffect(()=>{
+        
+        getToDos().then(data => {setToDos(data); console.log(ToDos.length)});
+    }, [])
 
     return (
         <section>
-            <Header/>
-            <Main/>
-            <ToDo content="Integer urna interdum massa libero auctor neque turpis turpis semper. Duis vel sed fames integer." isChecked={true}/>
+            <Header
+              ToDos={ToDos}
+            />
+            <Main
+             ToDos={ToDos}
+            />
         </section>
     )
 }

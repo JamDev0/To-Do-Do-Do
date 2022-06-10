@@ -1,0 +1,31 @@
+[
+    {
+        "id": 1,
+        "isChecked": false,
+        "content": "Integer urna interdum massa libero auctor neque turpis turpis semper. Duis vel sed fames integer."
+    },
+
+    {
+        "id": 2,
+        "isChecked": true,
+        "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque quis ligula commodo, fringilla nibh in, suscipit nulla. Curabitur accumsan metus augue, sit amet aliquam lorem."
+    },
+
+    {
+        "id": 3,
+        "isChecked": false,
+        "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec leo auctor metus euismod iaculis. Sed at erat ut massa imperdiet tempor. Duis eget feugiat massa. Donec consectetur pulvinar fermentum. Praesent."
+    },
+
+    {
+        "id": 4,
+        "isChecked": false,
+        "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse et gravida mi. Nunc erat ligula."
+    },
+
+    {
+        "id": 5,
+        "isChecked": true,
+        "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam ac est dapibus, aliquet massa ultricies, sagittis nunc."
+    }
+]
