@@ -32,6 +32,10 @@ module.exports = {
             }
         },
       },
+      
+      fontFamily: {
+        'Inter': 'Inter',
+      },
     },
   },
   plugins: [],

@@ -3,5 +3,5 @@
 @tailwind utilities;
 
 body {
-   @apply bg-brand-base-gray-600;
+   @apply bg-brand-base-gray-600 leading-snug font-Inter;
 }
