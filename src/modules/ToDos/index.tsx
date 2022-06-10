@@ -22,8 +22,8 @@ export function ToDos() {
     }
 
     useEffect(()=>{
-        
-        getToDos().then(data => {setToDos(data); console.log(ToDos.length)});
+
+        getToDos().then(data => setToDos(data));
     }, [])
 
     return (

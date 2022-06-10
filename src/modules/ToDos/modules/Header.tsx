@@ -12,9 +12,17 @@ export function Header({ ToDos }:HeaderProps) {
     const [numOfCreatedToDos, setNumOfCreatedToDos] = useState<number>(ToDos.length);
     const [numOfConcludedToDos, setNumOfConcludedToDos] = useState<number>(0);
 
-    // Arrumar isso aqui que não atualiza o numero de todos >|
+    
 
-    console.log('Numero de Todos dentro do header ', ToDos)
+    useEffect(()=>{
+        setNumOfCreatedToDos(ToDos.length);
+
+        ToDos.forEach(element => {
+            element.isChecked ? setNumOfConcludedToDos(numOfConcludedToDos + 1) : null;
+        });
+
+        // ver o bang sobre atualização multiplas de state da rocket
+    }, [ToDos]);
 
     return (
         <header className="flex w-full justify-between mb-[24px] font-bold text-sm">

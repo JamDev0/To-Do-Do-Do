@@ -11,10 +11,10 @@ interface MainProps {
 }
 
 export function Main({ ToDos }:MainProps) {
-    const [doToDosExists, setDoToDosExists] = useState<boolean>(false)
+    const [doToDosExists, setDoToDosExists] = useState<boolean>(true);
 
     return (
-        <main className={`w-full relative rounded-lg border-brand-base-gray-400 border-t-2 ${!doToDosExists ? 'flex items-center justify-center px-20 py-[50px]' : ''}`}>
+        <main className={`w-full relative ${!doToDosExists ? 'flex items-center justify-center px-20 py-[50px] rounded-lg border-brand-base-gray-400 border-t-2' : 'flex flex-col gap-y-[12px]'}`}>
             {
                 doToDosExists ?
                     (

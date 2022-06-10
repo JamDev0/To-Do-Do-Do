@@ -4,7 +4,7 @@ import { ToDos } from "./ToDos";
 
 export function Main() {
     return(
-        <main className="w-3/5 mx-auto">
+        <main className="w-3/5 mx-auto mb-[100px]">
             <CreateNewToDo/>
 
             <ToDos />
