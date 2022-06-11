@@ -1,8 +1,8 @@
 [
     {
         "id": 1,
-        "isChecked": false,
-        "content": "Integer urna interdum massa libero auctor neque turpis turpis semper. Duis vel sed fames integer."
+        "isChecked": true,
+        "content": "Terminar esse app :)"
     },
 
     {

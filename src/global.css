@@ -5,3 +5,7 @@
 body {
    @apply bg-brand-base-gray-600 leading-snug font-Inter;
 }
+
+* {
+   @apply focus:outline focus:outline-brand-purple-400 focus:outline-offset-1;
+}

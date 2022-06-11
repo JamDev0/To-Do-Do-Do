@@ -4,28 +4,17 @@ import { ToDo } from "../ToDo";
 import { Header } from "./modules/Header";
 import { Main } from "./modules/Main";
 
-interface ToDosInterface {
-    id: number;
-    isChecked: boolean;
-    content: string;
+interface ToDosProps {
+    ToDos: {
+        id: number;
+        isChecked: boolean;
+        content: string;
+    }[];
+    toDoCheckEvent: (arg: number) => void;
+    toDoRemoveEvent: (arg: number) => void;
 }
 
-export function ToDos() {
-    const [ToDos, setToDos] = useState<ToDosInterface[] | []>([]);
-
-    async function getToDos() {
-        return fetch('../../../Jsons/ToDos.json').then(res => res.json()).then(data => {return data})
-    }
-
-    function doToDosExists() {
-        return ToDos.length > 0;
-    }
-
-    useEffect(()=>{
-
-        getToDos().then(data => setToDos(data));
-    }, [])
-
+export function ToDos({ ToDos, toDoCheckEvent, toDoRemoveEvent }: ToDosProps) {
     return (
         <section>
             <Header
@@ -33,6 +22,8 @@ export function ToDos() {
             />
             <Main
              ToDos={ToDos}
+             toDoCheckEvent={toDoCheckEvent}
+             toDoRemoveEvent={toDoRemoveEvent}
             />
         </section>
     )

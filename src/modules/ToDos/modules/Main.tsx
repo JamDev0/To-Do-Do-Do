@@ -1,5 +1,5 @@
 import { ClipboardText } from "phosphor-react"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { ToDo } from "../../ToDo";
 
 interface MainProps {
@@ -7,19 +7,29 @@ interface MainProps {
         id: number;
         isChecked: boolean;
         content: string;
-    }[]
+    }[];
+    toDoCheckEvent: (arg: number) => void;
+    toDoRemoveEvent: (arg: number) => void;
 }
 
-export function Main({ ToDos }:MainProps) {
-    const [doToDosExists, setDoToDosExists] = useState<boolean>(true);
+export function Main({ ToDos, toDoCheckEvent, toDoRemoveEvent }:MainProps) {
+    const [toDosState, setToDosState] = useState<MainProps['ToDos'] | []>([]);
+
+    useEffect(()=>{
+        setToDosState(ToDos);
+    }, [ToDos]);
+
+    function doToDosExists() {
+        return toDosState.length > 0 ? true : false;
+    }
 
     return (
-        <main className={`w-full relative ${!doToDosExists ? 'flex items-center justify-center px-20 py-[50px] rounded-lg border-brand-base-gray-400 border-t-2' : 'flex flex-col gap-y-[12px]'}`}>
+        <main className={`w-full relative ${!doToDosExists() ? 'flex items-center justify-center px-20 py-[50px] rounded-lg border-brand-base-gray-400 border-t-2' : 'flex flex-col gap-y-[12px]'}`}>
             {
-                doToDosExists ?
+                doToDosExists() ?
                     (
-                        ToDos.map( props => {
-                            return <ToDo {...props}/>
+                        toDosState.map( props => {
+                            return <ToDo key={props.id} clickEvent={toDoCheckEvent} removeEvent={toDoRemoveEvent} {...props}/>
                         })
                     )
                 :

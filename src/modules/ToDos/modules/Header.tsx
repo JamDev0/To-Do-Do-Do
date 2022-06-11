@@ -17,11 +17,10 @@ export function Header({ ToDos }:HeaderProps) {
     useEffect(()=>{
         setNumOfCreatedToDos(ToDos.length);
 
+        setNumOfConcludedToDos(0);
         ToDos.forEach(element => {
-            element.isChecked ? setNumOfConcludedToDos(numOfConcludedToDos + 1) : null;
+            element.isChecked ? setNumOfConcludedToDos(recent => recent + 1) : null;
         });
-
-        // ver o bang sobre atualização multiplas de state da rocket
     }, [ToDos]);
 
     return (
