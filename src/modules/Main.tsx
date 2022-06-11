@@ -12,13 +12,17 @@ interface ToDosInterface {
 export function Main() {
     const [toDos, setToDos] = useState<ToDosInterface[] | []>([]);
 
-    async function getToDos() {
-        return fetch('../../../Jsons/ToDos.json').then(res => res.json()).then(data => {return data})
-    }
+    
+    // codigos que são usados para facilitar o teste do app, carregam ToDos pre feitos de um arquivo json local
 
-    useEffect(()=>{
-        getToDos().then(data => setToDos(data));
-    }, []);
+    // async function getToDos() {
+    //     return fetch('../../../Jsons/ToDos.json').then(res => res.json()).then(data => {return data})
+    // }
+
+    // useEffect(()=>{
+    //     getToDos().then(data => setToDos(data));
+    // }, []);
+
 
     function handleToDoCheck(submitterId: number) {
         let toDosElements = toDos;
