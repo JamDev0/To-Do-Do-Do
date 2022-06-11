@@ -9,8 +9,6 @@ interface ToDoProps {
 }
 
 export function ToDo({content, isChecked, id, clickEvent, removeEvent}:ToDoProps) {
-    console.log('Elemento de id: ', id, 'Esta checado?: ', isChecked);
-
     return (
         <div className={`flex order-50 gap-x-3 items-start p-5 bg-brand-base-gray-500 rounded-lg border-brand-base-gray-400 border ${isChecked ? 'order-last' : 'order-first' }`}>
             
