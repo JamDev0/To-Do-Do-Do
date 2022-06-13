@@ -33,19 +33,17 @@ export function Main() {
     }, [toDos, wasComponentRendered])
 
     function handleToDoCheck(submitterId: number) {
-        let toDosElements = toDos;
-        let submitter = toDosElements.find(element => element.id === submitterId)!;
+        let toDosElements = toDos.filter(element => element.id !== submitterId);;
+        let submitter = toDos.find(element => element.id === submitterId)!;
         submitter.isChecked = !submitter.isChecked;
-        let toDosElementsWithSubmitterAltered = [];
         if(submitter.isChecked)
         {
-            toDosElementsWithSubmitterAltered = toDos.filter(element => element.id !== submitterId);
-            toDosElementsWithSubmitterAltered.push(submitter);
+            toDosElements.push(submitter);
         } else {
-            toDosElementsWithSubmitterAltered = toDosElements.map(element => element.id !== submitterId ? element : submitter);
+            toDosElements.unshift(submitter);
         }
 
-        setToDos(toDosElementsWithSubmitterAltered);
+        setToDos(toDosElements);
     }
 
     function handleToDoDeletion(submitterId: number) {
