@@ -34,6 +34,7 @@ export function CreateNewToDo({ handleCreateToDoEvent }: CreateNewToDoProps) {
              placeholder='Adicione uma nova tarefa'
              onChange={ event => {setInputValue(event.target.value)}}
              onFocus={ () => !isInputFocused ? toggleIsInputFocused() : null }
+             // @ts-ignore
              onBlur={ event => {event.relatedTarget?.name === 'createNewToDoButton' ? null : toggleIsInputFocused()} }
              value={inputValue}
             >
@@ -59,6 +60,7 @@ export function CreateNewToDo({ handleCreateToDoEvent }: CreateNewToDoProps) {
                                  name='createNewToDoButton'
                                  className="transition-colors duration-200 grow-0 p-4 rounded-lg align-middle bg-brand-blue-500 text-sm font-bold flex gap-x-2 justify-center items-center text-brand-base-gray-100 hover:bg-brand-blue-400 focus:bg-brand-blue-400"
                                  onClick={ event => {event.preventDefault(); handleCreateToDoEvent(inputValue); setInputValue('')}}
+                                 // @ts-ignore
                                  onBlur={ event => {event.relatedTarget?.name === 'createToDoInput' ? null : toggleIsInputFocused()} }
                                 >
                                     Criar <PlusCircle weight='bold' className='w-5 h-5'/>
