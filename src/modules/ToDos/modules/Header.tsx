@@ -24,7 +24,13 @@ export function Header({ ToDos }:HeaderProps) {
     }, [ToDos]);
 
     return (
-        <header className="flex w-full justify-between mb-[24px] font-bold text-sm">
+        <header
+         className="
+            flex flex-col items-center w-full justify-between mb-[24px] font-bold text-sm gap-y-[20px]
+            lg:flex-row lg:gap-y-0
+         "
+        >
+
             <div className="flex items-center gap-x-2">
                 <span className="text-brand-blue-400">Tarefas criadas</span>
                 <span className="text-brand-base-gray-200 bg-brand-base-gray-400 rounded-full px-3 py-1 text-xs">{numOfCreatedToDos}</span>

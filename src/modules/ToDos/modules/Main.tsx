@@ -24,7 +24,12 @@ export function Main({ ToDos, toDoCheckEvent, toDoRemoveEvent }:MainProps) {
     }
 
     return (
-        <main className={`w-full relative ${!doToDosExists() ? 'flex items-center justify-center px-20 py-[50px] rounded-lg border-brand-base-gray-400 border-t-2' : 'flex flex-col gap-y-[12px]'}`}>
+        <main 
+         className={`
+            w-full relative
+            ${!doToDosExists() ? 'flex items-center justify-center px-5 py-[50px] rounded-lg border-brand-base-gray-400 border-t-2 lg:px-20' : 'flex flex-col gap-y-[12px]'}
+         `}
+        >
             {
                 doToDosExists() ?
                     (
@@ -34,7 +39,7 @@ export function Main({ ToDos, toDoCheckEvent, toDoRemoveEvent }:MainProps) {
                     )
                 :
                     (
-                        <div className="flex flex-col items-center justify-center gap-y-[16px]">
+                        <div className="flex flex-col items-center justify-center gap-y-[16px] text-center">
                             <ClipboardText className="w-[4.5rem] h-[4.5rem] text-brand-base-gray-400"/>
 
                             <div className="flex flex-col items-center text-base text-brand-base-gray-300">

@@ -11,24 +11,39 @@ interface ToDosInterface {
 
 export function Main() {
     const [toDos, setToDos] = useState<ToDosInterface[] | []>([]);
+    const [wasComponentRendered, setWasComponentRendered] = useState<boolean>(false)
 
-    
-    // codigos que são usados para facilitar o teste do app, carregam ToDos pre feitos de um arquivo json local
+    async function getToDos() {
+        return JSON.parse(localStorage.getItem('ToDos')!);
+    }
 
-    // async function getToDos() {
-    //     return fetch('../../../Jsons/ToDos.json').then(res => res.json()).then(data => {return data})
-    // }
+    useEffect(()=>{
+        if(localStorage.getItem('ToDos') !== null)
+        {
+            getToDos().then(data => setToDos(data));
+        }
+        setWasComponentRendered(true);
+    }, []);
 
-    // useEffect(()=>{
-    //     getToDos().then(data => setToDos(data));
-    // }, []);
-
+    useEffect(()=>{
+        if(wasComponentRendered)
+        {
+            localStorage.setItem('ToDos', JSON.stringify(toDos))
+        }
+    }, [toDos, wasComponentRendered])
 
     function handleToDoCheck(submitterId: number) {
         let toDosElements = toDos;
         let submitter = toDosElements.find(element => element.id === submitterId)!;
         submitter.isChecked = !submitter.isChecked;
-        let toDosElementsWithSubmitterAltered = toDosElements.map(element => element.id !== submitterId ? element : submitter);
+        let toDosElementsWithSubmitterAltered = [];
+        if(submitter.isChecked)
+        {
+            toDosElementsWithSubmitterAltered = toDos.filter(element => element.id !== submitterId);
+            toDosElementsWithSubmitterAltered.push(submitter);
+        } else {
+            toDosElementsWithSubmitterAltered = toDosElements.map(element => element.id !== submitterId ? element : submitter);
+        }
 
         setToDos(toDosElementsWithSubmitterAltered);
     }
@@ -40,17 +55,23 @@ export function Main() {
     }
 
     function handleToDoCreation(submitterText: string) {
-        setToDos([...toDos, {
+        setToDos([{
             id: toDos.length + 1,
             content: submitterText,
             isChecked: false,
-        }])
+        }, ...toDos])
     }
 
+
     return(
-        <main className="w-3/5 mx-auto mb-[100px]">
+        <main
+         className="
+            w-5/6 mx-auto mb-[100px]
+            lg:w-3/5
+         "
+        >
             <CreateNewToDo
-             createButtonClickEvent={handleToDoCreation}
+             handleCreateToDoEvent={handleToDoCreation}
             />
 
             <ToDos
