@@ -52,12 +52,29 @@ export function Main() {
         setToDos(toDosWithoutSubmitter);
     }
 
+    function getBiggestToDoId() {
+        let biggestId: number;
+        if(toDos.length > 0)
+        {
+            let array = toDos;
+            biggestId = array[0].id;
+
+        array.forEach(toDo => {if(toDo.id > biggestId){biggestId = toDo.id}})
+        } else {
+            biggestId = -1;
+        }
+        
+
+        return biggestId;
+    }
+
+
     function handleToDoCreation(submitterText: string) {
-        setToDos([{
-            id: toDos.length + 1,
+        setToDos(recent => [{
+            id: getBiggestToDoId() + 1,
             content: submitterText,
             isChecked: false,
-        }, ...toDos])
+        }, ...toDos]);
     }
 
 
