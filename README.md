@@ -10,5 +10,29 @@ https://to-do-do-do.vercel.app/
 ### Versão atual
   Na atual versão, todas as funcionalidades, estilizações e todo layout planejado esta presente, também esta presente o local storage.
   
-## Bugs
-  Se achar algum bus, reporte, tire uma print e me mande aqui explicando oque aconteceu, para que eu possa estar sempre aprimorando o projeto ;)
+  🎀 Layout:
+  
+  <br>
+  
+   👉 [reactjs](https://github.com/facebook/react) com [typescript](https://github.com/Microsoft/TypeScript);
+   
+   👉 [tailwind](https://github.com/tailwindlabs/tailwindcss)
+   
+  <br>
+  <br>
+  
+  🖼️ Icones:
+
+   👉 [phorsphor_icons](https://github.com/phosphor-icons/phosphor-react)
+  
+  
+  <br>
+  <br>
+  
+   🖥️ Responsividade:
+   
+   👉 [react-responsive](https://github.com/yocontra/react-responsive)
+
+  <br>
+  <br>
+  
